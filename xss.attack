@@ -1,0 +1,11 @@
+Feature: Check for cross site scripting (XSS) vulnerability using arachni against gruyere
+Background:
+  Given "arachni" is installed
+
+Scenario: Do a full XSS
+
+  When I launch an "archani" attack with:
+  """
+  arachni --check=XSS --scope-page-limit=1 http://172.17.0.2:80008/login
+  """
+  Then the output should contain "0 issues were detected"
